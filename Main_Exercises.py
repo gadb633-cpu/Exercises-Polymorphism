@@ -187,47 +187,125 @@
 # print(samsung.run_schedule(21))
 # print(lg.run_schedule(21))
 
-# 8. Energy Usage Override
+# # 8. Energy Usage Override
+# class Device:
+#     def __init__(self,name,watts):
+#         self.name = name
+#         self.watts=watts
+#     def energy_usage(self):
+#         return self.watts
+# class SmartTv(Device):
+#     def __init__(self, name,watts):
+#         super().__init__(name,watts)
+#     def energy_usage(self):
+#         return f"{self.name}:{self.watts}w"    
+# class SmartSpeaker(Device):
+#     def __init__(self, name,watts):
+#         super().__init__(name,watts)
+#     def energy_usage(self):
+#         return f"{self.name}:{self.watts}w"
+# class SmartLamp(Device):
+#     def __init__(self, name,watts):
+#         super().__init__(name,watts)
+#     def energy_usage(self):
+#         return f"{self.name}:{self.watts}w"        
+# class SmartAC(Device):
+#     def __init__(self, name,watts):
+#         super().__init__(name,watts)
+#     def energy_usage(self):
+#         return f"{self.name}:{self.watts}w" 
+# list_instance =[]
+# lg = SmartTv("LG",150)
+# desk_Lamp = SmartLamp("Desk Lamp",8)    
+# echo = SmartSpeaker("Echo",30)
+# samsung = SmartAC("samsung",900)
+# list_instance.append(lg)
+# list_instance.append(desk_Lamp)                      
+# list_instance.append(echo)                      
+# list_instance.append(samsung)
+# total = 0
+# for instance in list_instance:
+#     total += instance.watts
+#     print(instance.energy_usage())
+# print(f"total is: {total}")
+
+# 9. Consistent Control with Polymorphism
 class Device:
-    def __init__(self,name,watts):
+    def __init__(self,name):
         self.name = name
-        self.watts=watts
-    def energy_usage(self):
-        return self.watts
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off" 
 class SmartTv(Device):
-    def __init__(self, name,watts):
-        super().__init__(name,watts)
-    def energy_usage(self):
-        return f"{self.name}:{self.watts}w"    
+    def __init__(self, name):
+        super().__init__(name)
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"    
 class SmartSpeaker(Device):
-    def __init__(self, name,watts):
-        super().__init__(name,watts)
-    def energy_usage(self):
-        return f"{self.name}:{self.watts}w"
+    def __init__(self, name):
+        super().__init__(name)
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"                  
 class SmartLamp(Device):
-    def __init__(self, name,watts):
-        super().__init__(name,watts)
-    def energy_usage(self):
-        return f"{self.name}:{self.watts}w"        
+    def __init__(self, name):
+        super().__init__(name)
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"    
 class SmartAC(Device):
-    def __init__(self, name,watts):
-        super().__init__(name,watts)
-    def energy_usage(self):
-        return f"{self.name}:{self.watts}w" 
-list_instance =[]
-lg = SmartTv("LG",150)
-desk_Lamp = SmartLamp("Desk Lamp",8)    
-echo = SmartSpeaker("Echo",30)
-samsung = SmartAC("samsung",900)
-list_instance.append(lg)
-list_instance.append(desk_Lamp)                      
-list_instance.append(echo)                      
-list_instance.append(samsung)
-total = 0
-for instance in list_instance:
-    total += instance.watts
-    print(instance.energy_usage())
-print(f"total is: {total}")
+    def __init__(self, name):
+        super().__init__(name)
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"    
+class Smartfon(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def activate(self):
+        return f"Device {self.name} is now on."
+    def deactivate(self):
+        return f"Device {self.name} is now off."     
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"
+class HomeSystem:
+    def list_of_instance(self):
+        list_instance = []
+        lg = SmartTv("LG")
+        desk_Lamp = SmartLamp("Desk Lamp")    
+        echo = SmartSpeaker("Echo")
+        samsung = SmartAC("samsung")
+        ayfon = Smartfon("ayfon") 
+        list_instance.append(lg)
+        list_instance.append(desk_Lamp)                      
+        list_instance.append(echo)                      
+        list_instance.append(samsung)    
+        list_instance.append(ayfon)
+        
+        for self.instance in list_instance:
+            print(self.instance.activate())
+            print(self.instance.deactivate())
+            print(self.instance.status())
+smart_homeSystem = HomeSystem()
+smart_homeSystem.list_of_instance()            
+        
+
 
 
 
