@@ -39,4 +39,29 @@ Bedroom_Lamp=SmartLamp("Bedroom Lamp")
 Living_Room_AC=SmartAC("Living Room AC")
 print(Bedroom_Lamp.deactivate())
 print(Living_Room_AC.deactivate())
+
+# 3. Status Reports
+class Device:
+    def __init__(self,name, is_on):
+        self.is_on = is_on
+        self.name =name
+    def status(self):
+        return f"{self.name}: on or {self.name}: off"
+class SmartTV(Device):
+    def __init__(self, name, is_on,channel):
+        super().__init__(name, is_on)
+        self.channel=channel
+    def status(self):
+        return f"{self.name}: on, watching channel {self.channel} or {self.name}: off"
+class SmartSpeaker(Device):
+    def __init__(self, name, is_on,song):
+        super().__init__(name, is_on)
+        self.song=song
+    def status(self):
+        return f"{self.name}: on, playing {self.song}"
+    
+lg = SmartTV("LG", True, 8)
+alexa = SmartSpeaker("Alexa", True, "Bohemian Rhapsody")         
+print(lg.status())
+print(alexa.status())
     
