@@ -157,7 +157,35 @@ list_instance.append(desk_Lamp)
 list_instance.append(echo)                      
 list_instance.append(samsung)
 for list1 in list_instance:
-    print(list1.send_command(list1,"start"))  
+    print(list1.send_command(list1,"start"))
+
+# 7. Smart Home Schedule
+class Device:
+    def __init__(self,name):
+        self.name =name
+    def run_schedule(self,hour):
+        return f"{self.name} is idle."
+class SmartLamp(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def run_schedule(self,hour):
+        return f"{self.name}: turning on." if 18 <= hour <= 23 else f"{self.name}: turning off."
+class SmartAC(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def run_schedule(self,hour):
+        return f"{self.name}: turning on." if 12 <= hour <= 20 else f"{self.name}: turning off."
+class SmartTV(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def run_schedule(self,hour):
+        return f"{self.name}: turning on." if 20 <= hour <= 23 else f"{self.name}: turning off." 
+desk_Lamp = SmartLamp("Desk Lamp")                                
+samsung = SmartAC("samsung")
+lg = SmartTV("LG")
+print(desk_Lamp.run_schedule(21))
+print(samsung.run_schedule(21))
+print(lg.run_schedule(21))
 
 
 
