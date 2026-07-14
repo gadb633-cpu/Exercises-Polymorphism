@@ -96,6 +96,30 @@ list_instance.append(echo)
 for list1 in list_instance:
     print(list1.activate())
 
+# 5. Volume Control Override
+class Device:
+    def __init__(self,name):
+        self.name =name
+    def set_volume(self,level):
+        return f"Device {self.name} volume set to {level}."
+class SmartSpeaker(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def set_volume(self,level):
+        return f"Speaker {self.name} is now at volume {level}/10. {'Loud!' if level > 7 else ''}"        
+class SmartTV(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def set_volume(self,level):
+        return f"TV {self.name} volume: {level}. {'Muted!' if level == 0 else ''}"    
+bose= SmartSpeaker("Bose")
+lg = SmartTV("LG")
+print(bose.set_volume(9))
+print(bose.set_volume(3))
+print(lg.set_volume(8))
+print(lg.set_volume(0))
+
+
 
 
 
