@@ -303,8 +303,54 @@ class HomeSystem:
             print(self.instance.deactivate())
             print(self.instance.status())
 smart_homeSystem = HomeSystem()
-smart_homeSystem.list_of_instance()            
-        
+smart_homeSystem.list_of_instance() 
+
+# 10. Alarm Integration
+class Device:
+    def __init__(self,name):
+        self.name =name
+    def trigger_alarm(self,alert_type):
+        return f"{self.name} received alert: {alert_type}."
+    def send_alert(self,alert_type):
+        return self.trigger_alarm(alert_type)
+          
+class SmartTV(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def trigger_alarm(self,alert_type):
+        return f"{self.name} received alert: {alert_type} There is an emergency error! ."      
+class SmartSpeaker(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def trigger_alarm(self,alert_type):
+        return f"{self.name} received alert: {alert_type} oooooo...."      
+class SmartLamp(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def trigger_alarm(self,alert_type):
+        return f"{self.name} received alert: {alert_type} is on."      
+class SmartDoorLock(Device):  
+    def __init__(self, name):
+        super().__init__(name)    
+    def trigger_alarm(self,alert_type):
+        return f"{self.name} received alert: {alert_type} The door is locked!!."      
+class AlarmSystem:
+    def list_of_instance(self):
+        list_instance = []
+        lg = SmartTV("LG")
+        desk_Lamp = SmartLamp("Desk Lamp")    
+        echo = SmartSpeaker("Echo")
+        samsung = SmartDoorLock("samsung")
+        list_instance.append(lg)
+        list_instance.append(desk_Lamp)                      
+        list_instance.append(echo)                      
+        list_instance.append(samsung)    
+        for self.instance in list_instance:
+            print(self.instance.send_alert("fire"))
+            print(self.instance.send_alert("break-in"))
+Emergency_alert = AlarmSystem()
+Emergency_alert.list_of_instance()              
+
 
 
 
